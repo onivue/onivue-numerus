@@ -16,7 +16,7 @@ export const CounterView = () => {
             </div>
 
             <motion.div
-                // className="object-cover border border-gray-700 rounded-full w-28 h-28 md:w-32 md:h-32 mt-36"
+                className="pb-8"
                 variants={{
                     hidden: {
                         scale: 0,
@@ -36,7 +36,7 @@ export const CounterView = () => {
                 animate="visible"
             >
                 <SettingBar />
-                <div className="grid grid-cols-2 gap-1 lg:grid-cols-3 sm:gap-2 lg:gap-4">
+                <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 sm:gap-2 lg:gap-4">
                     <Counter />
                     <Counter />
                     <Counter />

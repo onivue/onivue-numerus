@@ -29,6 +29,7 @@ module.exports = {
                 },
                 pink: '#EEE8F6',
                 cyan: colors.cyan,
+                lime: colors.lime,
             },
         },
     },

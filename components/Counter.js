@@ -1,5 +1,6 @@
 import { HiPlus, HiMinus, HiOutlinePencilAlt, HiOutlineDotsVertical } from 'react-icons/hi'
 import starWarsNames from '@/data/starwars-names.json'
+import Avatar, { genConfig } from 'react-nice-avatar'
 
 const Counter = ({ counterName }) => {
     if (!counterName) {
@@ -17,21 +18,22 @@ const Counter = ({ counterName }) => {
                         </button>
                     </div>
                 </div>
-                <div className="absolute left-0 text-left top-1 md:top-2 md:right-2">
+                <div className="absolute text-left left-1 top-1 md:top-2 md:right-2">
                     <div className="relative justify-center z-index-10">
-                        <button className="flex items-center py-1 pl-4 pr-2 text-sm font-bold text-white rounded group hover:bg-gray-100">
-                            <img
-                                className="inline object-cover w-8 h-8 mr-3 rounded-full"
-                                src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                                alt="Profile image"
-                            />
-                            <span>{counterName}</span>
+                        <button className="flex items-center py-1 pl-4 pr-2 text-sm font-bold text-white rounded group hover:bg-gray-100 hover:bg-opacity-50">
+                            <Avatar className="inline object-cover w-8 h-8 mr-3 rounded-full" />
+                            <span>
+                                {counterName}
+                                <span className="mt-1 text-xs creator-name text-light-gray">
+                                    {' '}
+                                    *
+                                </span>
+                            </span>
                             <HiOutlinePencilAlt className="w-5 h-5 ml-2 text-gray-800 opacity-0 group-hover:text-cyan-400 group-hover:opacity-100" />
                         </button>
                     </div>
                 </div>
-                <div className="px-3 pt-8 pb-3 text-center md:px-6 lg:px-10">
-                    <div className="mt-1 text-xs creator-name text-light-gray">winn</div>
+                <div className="px-3 pb-1 text-center pt-14 md:px-6 lg:px-10">
                     <div className="text-5xl font-bold line text-cyan-400">0</div>
                 </div>
                 <div className="flex ">

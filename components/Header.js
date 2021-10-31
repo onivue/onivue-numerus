@@ -6,6 +6,7 @@ import { useTheme } from 'next-themes'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { HiMoon, HiSun } from 'react-icons/hi'
 import { Container } from '@/components/Container'
+import Icon from './Icon'
 // import useSound from 'use-sound'
 
 // import { useHeaderVisible } from "./libs/useHeaderVisible";
@@ -108,9 +109,7 @@ export const Header = () => {
                 <div className="flex items-center justify-between w-auto py-5 md:py-9 text-black-900 dark:text-white-900">
                     <Link href="/">
                         <a href="/">
-                            <div className="w-24 fill-current md:w-28 dark:text-white-900 text-black-900">
-                                LOGO
-                            </div>
+                            <Icon className="w-12 h-12 fill-current md:w-28 dark:text-white-900 text-black-700" />
                         </a>
                     </Link>
                     <div className="flex items-center">
