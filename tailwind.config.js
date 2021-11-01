@@ -8,17 +8,11 @@ module.exports = {
         extend: {
             colors: {
                 darkTheme: '#171a23',
-                white: {
-                    900: '#ffffff',
-                    700: '#C9C9CB',
-                    500: '#A5A6A9',
-                    300: '#363B49',
-                },
+                lightTheme: '#ffffff',
                 gray: {
                     700: '#8E8E8E',
                     900: '#363B49',
                 },
-                lightTheme: '#ffffff',
                 blue: {
                     700: '#7899FB',
                     900: '#3C6CFF',

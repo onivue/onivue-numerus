@@ -6,7 +6,7 @@ import { useTheme } from 'next-themes'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { HiMoon, HiSun } from 'react-icons/hi'
 import { Container } from '@/components/Container'
-import Icon from './Icon'
+import Logo from '@/components/Logo'
 // import useSound from 'use-sound'
 
 // import { useHeaderVisible } from "./libs/useHeaderVisible";
@@ -106,10 +106,10 @@ export const Header = () => {
             )}
         >
             <Container>
-                <div className="flex items-center justify-between w-auto py-5 md:py-9 text-black-900 dark:text-white-900">
+                <div className="flex items-center justify-between w-auto py-5 md:py-9 text-black-900 dark:text-white">
                     <Link href="/">
                         <a href="/">
-                            <Icon className="w-12 h-12 fill-current md:w-28 dark:text-white-900 text-black-700" />
+                            <Logo className="w-12 h-12 fill-current md:w-28 dark:text-white text-black-700" />
                         </a>
                     </Link>
                     <div className="flex items-center">
@@ -133,11 +133,11 @@ export const Header = () => {
                                 {language}
                             </button>
                             {langPicker && (
-                                <div className="absolute w-full p-1 mt-4 rounded-md bg-pink dark:bg-white-900 text-black-900">
+                                <div className="absolute w-full p-1 mt-4 rounded-md bg-pink dark:bg-white text-black-900">
                                     {languages.map((currentLanguage, i) => (
                                         <div key={i}>
                                             <button
-                                                className="block w-full px-2 py-1 text-left transition-colors rounded-md hover:bg-white-700 focus:outline-none"
+                                                className="block w-full px-2 py-1 text-left transition-colors rounded-md hover:bg-white focus:outline-none"
                                                 onClick={toggleLanguage(currentLanguage.id)}
                                             >
                                                 <p className={clsx('inline')}>
@@ -148,7 +148,7 @@ export const Header = () => {
                                                 </span>
                                             </button>
                                             {i !== languages.length - 1 && (
-                                                <div className="my-1 bg-white-700 h-0.5" />
+                                                <div className="my-1 bg-white h-0.5" />
                                             )}
                                         </div>
                                     ))}

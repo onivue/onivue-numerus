@@ -5,18 +5,23 @@ import { Container } from '@/components/Container'
 import AddCounter from './AddCounter'
 import Counter from './Counter'
 import SettingBar from './SettingBar'
+import { useState } from 'react'
 
 export const CounterView = () => {
+    const [counters, setCounters] = useState([])
+
     return (
         <Container className="pt-24 md:pt-32">
             <div className="flex items-center">
-                <h1 className="mt-6 mb-6 text-4xl font-bold md:mt-8 md:mb-8 md:text-5xl text-black-900 dark:text-white-900">
-                    Starte mit einem neuen Counter!
-                </h1>
+                {counters.length === 0 && (
+                    <h1 className="mt-6 mb-6 text-4xl font-bold md:mt-8 md:mb-8 md:text-5xl text-black-900 dark:text-white">
+                        Starte mit einem neuen Counter!
+                    </h1>
+                )}
             </div>
 
             <motion.div
-                className="pb-8"
+                className=""
                 variants={{
                     hidden: {
                         scale: 0,
@@ -37,15 +42,15 @@ export const CounterView = () => {
             >
                 <SettingBar />
                 <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 sm:gap-2 lg:gap-4">
-                    <Counter />
-                    <Counter />
-                    <Counter />
-                    <Counter />
-                    <Counter />
-                    <Counter />
+                    {counters.map((c) => {
+                        return <Counter key={c.id} initialCounter={c.count} />
+                    })}
+
                     <AddCounter
                         onClick={() => {
-                            console.log('Click')
+                            var date = new Date()
+                            var milliseconds = date.getTime()
+                            setCounters([...counters, { id: milliseconds, count: 0, increment: 0 }])
                         }}
                     />
                 </div>

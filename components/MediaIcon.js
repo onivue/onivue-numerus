@@ -21,7 +21,7 @@ export const MediaIcon = ({ icon, href, className }) => {
                         scale: 1.2,
                     },
                 }}
-                className="text-black-900 dark:text-white-900"
+                className="text-black-900 dark:text-white"
             >
                 {icon}
             </motion.div>

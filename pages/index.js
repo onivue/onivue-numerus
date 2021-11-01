@@ -12,10 +12,12 @@ export default function Home() {
     const [main, setMain] = useState(false)
 
     useEffect(() => {
-        const ids = [
-            setTimeout(() => setCitation(false), 4800),
-            setTimeout(() => setMain(true), 5700),
-        ]
+        // !COMMENT OUT IN DEV MODE
+        // const ids = [
+        //     setTimeout(() => setCitation(false), 4800),
+        //     setTimeout(() => setMain(true), 5700),
+        // ]
+        const ids = [setCitation(false), setMain(true)]
 
         return () => ids.forEach((id) => clearTimeout(id))
     }, [setCitation])

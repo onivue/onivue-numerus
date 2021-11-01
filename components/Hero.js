@@ -29,11 +29,11 @@ export const Hero = () => {
                 animate="visible"
             />
             <div className="flex items-center">
-                <h1 className="mt-6 mb-6 text-4xl font-bold md:mt-8 md:mb-8 md:text-5xl text-black-900 dark:text-white-900">
+                <h1 className="mt-6 mb-6 text-4xl font-bold md:mt-8 md:mb-8 md:text-5xl text-black-900 dark:text-white">
                     Hi, I'm Albin!<div className="text-4xl md:text-5xl">👋</div>
                 </h1>
             </div>
-            <p className="text-xl font-bold tracking-normal md:text-3xl text-black-700 dark:text-white-700">
+            <p className="text-xl font-bold tracking-normal md:text-3xl text-black-700 dark:text-white">
                 Text1
                 <br />
                 Text2
@@ -66,15 +66,15 @@ export const Hero = () => {
                 />
             </div>
             <div className="mt-10">
-                <p className="mb-8 text-base md:text-xl dark:text-white-700 text-black-700">
+                <p className="mb-8 text-base md:text-xl dark:text-white text-black-700">
                     I am a rising junior at Nazarbayev University majoring in CS.
                 </p>
-                <p className="mb-8 text-base md:text-xl dark:text-white-700 text-black-700">
+                <p className="mb-8 text-base md:text-xl dark:text-white text-black-700">
                     I enjoy creating high-quality software products with a complex logic behind it.
                     <br />
                     My technology stack includes React, TypeScript and Golang.
                 </p>
-                <p className="mb-8 text-base md:text-xl dark:text-white-700 text-black-700">
+                <p className="mb-8 text-base md:text-xl dark:text-white text-black-700">
                     I am also currently learning more about Ethereum blockchain and cybersecurity.
                 </p>
             </div>
