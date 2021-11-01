@@ -2,11 +2,11 @@ import * as React from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { HiOutlineDotsVertical } from 'react-icons/hi'
 
-export default function () {
+export default function ({ remove }) {
     return (
         <Menu>
             {({ open }) => (
-                <>
+                <div>
                     <Menu.Button className="flex items-center justify-center w-8 h-8 transition duration-150 ease-in-out hover:text-green-400 ">
                         <HiOutlineDotsVertical className="w-5 h-5" />
                     </Menu.Button>
@@ -20,10 +20,7 @@ export default function () {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                     >
-                        <Menu.Items
-                            static
-                            className="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
-                        >
+                        <Menu.Items className="absolute mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg right-2 w-36 md:w-56 ring-1 ring-black ring-opacity-5 focus:outline-none">
                             <div className="py-1">
                                 <Menu.Item>
                                     {({ active }) => (
@@ -65,8 +62,9 @@ export default function () {
                             <div className="py-1">
                                 <Menu.Item>
                                     {({ active }) => (
-                                        <a
+                                        <button
                                             href="#sign-out"
+                                            onClick={() => remove()}
                                             className={`${
                                                 active
                                                     ? 'bg-gray-100 text-gray-900'
@@ -74,13 +72,13 @@ export default function () {
                                             } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
                                         >
                                             Delete
-                                        </a>
+                                        </button>
                                     )}
                                 </Menu.Item>
                             </div>
                         </Menu.Items>
                     </Transition>
-                </>
+                </div>
             )}
         </Menu>
     )

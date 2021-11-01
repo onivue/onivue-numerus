@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaTelegram, FaTwitter } from 'react-icons/fa'
 import { MediaIcon } from '@/components/MediaIcon'
 import { Container } from '@/components/Container'
@@ -7,8 +7,24 @@ import Counter from './Counter'
 import SettingBar from './SettingBar'
 import { useState } from 'react'
 
+import { useLocalStorage } from '@/hooks/useLocalStorage'
+
+const container = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.2,
+        },
+    },
+}
+const listItem = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 },
+}
+
 export const CounterView = () => {
-    const [counters, setCounters] = useState([])
+    const [counters, setCounters] = useLocalStorage('onivue-numerus-app', [])
 
     return (
         <Container className="pt-24 md:pt-32">
@@ -20,30 +36,20 @@ export const CounterView = () => {
                 )}
             </div>
 
-            <motion.div
-                className=""
-                variants={{
-                    hidden: {
-                        scale: 0,
-                        opacity: 0,
-                    },
-                    visible: {
-                        scale: 1,
-                        opacity: 1,
-                    },
-                }}
-                transition={{
-                    damping: 5,
-                    mass: 1,
-                    delay: 0.2,
-                }}
-                initial="hidden"
-                animate="visible"
-            >
-                <SettingBar />
-                <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 sm:gap-2 lg:gap-4">
+            <SettingBar />
+            <AnimatePresence>
+                <motion.div
+                    className="grid grid-cols-2 gap-3 lg:grid-cols-3 sm:gap-2 lg:gap-4 "
+                    variants={container}
+                    initial="hidden"
+                    animate="show"
+                >
                     {counters.map((c) => {
-                        return <Counter key={c.id} initialCounter={c.count} />
+                        return (
+                            <motion.div variants={listItem} key={c.id}>
+                                <Counter initialCounter={c.count} counterId={c.id} />
+                            </motion.div>
+                        )
                     })}
 
                     <AddCounter
@@ -53,8 +59,8 @@ export const CounterView = () => {
                             setCounters([...counters, { id: milliseconds, count: 0, increment: 0 }])
                         }}
                     />
-                </div>
-            </motion.div>
+                </motion.div>
+            </AnimatePresence>
         </Container>
     )
 }
