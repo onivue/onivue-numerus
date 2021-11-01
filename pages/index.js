@@ -6,6 +6,7 @@ import { Header } from '@/components/Header'
 import { Container } from '@/components/Container'
 import { Hero } from '@/components/Hero'
 import { CounterView } from '@/components/CounterView'
+import Footer from '@/components/Footer'
 
 export default function Home() {
     const [citation, setCitation] = useState(true)
@@ -50,7 +51,12 @@ export default function Home() {
                     <Header />
 
                     <CounterView />
-                    <div className="h-[2000px] bg-gradient-to-r from-cyan-200 to-cyan-400 dark:bg-gradient-to-r dark:from-blue-600  dark:to-blue-400"></div>
+
+                    <Container>
+                        <div className="h-[200px] rounded-lg bg-gradient-to-r from-cyan-200 to-cyan-400 dark:bg-gradient-to-r dark:from-blue-600  dark:to-blue-400"></div>{' '}
+                    </Container>
+
+                    <Footer />
                 </motion.div>
             )}
         </>
