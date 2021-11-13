@@ -52,14 +52,18 @@ export const CounterView = () => {
       <SettingBar />
       <AnimatePresence>
         <motion.div
-          className="grid grid-cols-2 gap-3 lg:grid-cols-3 sm:gap-2 lg:gap-4 "
+          className="grid grid-cols-2 gap-6 lg:grid-cols-3 sm:gap-6 lg:gap-14 "
           variants={container}
           initial="hidden"
           animate="show"
         >
           {counters.map((c) => {
             return (
-              <motion.div variants={listItem} key={c.id}>
+              <motion.div
+                variants={listItem}
+                key={c.id}
+                className="flex transition-all duration-500"
+              >
                 <Counter
                   removeFromSession={() => {
                     deleteCounter(c.id)

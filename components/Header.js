@@ -84,7 +84,7 @@ export const Header = () => {
         )}
       >
         <div className="flex justify-center ">
-          <div className="w-full max-w-screen-lg px-4 mx-3 mt-3 rounded-lg  bg-gradient-to-r from-cyan-200 to-cyan-400 dark:bg-gradient-to-r dark:from-blue-600 dark:to-blue-400">
+          <div className="w-full max-w-screen-lg px-4 mx-3 mt-3 rounded-lg bg-cyan-400">
             <div className="flex items-center justify-between w-auto py-5 md:py-9 text-black-900 dark:text-white">
               <Link href="/">
                 <a href="/">

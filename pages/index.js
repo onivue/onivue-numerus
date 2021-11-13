@@ -9,56 +9,52 @@ import { CounterView } from '@/components/CounterView'
 import Footer from '@/components/Footer'
 
 export default function Home() {
-    const [citation, setCitation] = useState(true)
-    const [main, setMain] = useState(false)
+  const [citation, setCitation] = useState(true)
+  const [main, setMain] = useState(false)
 
-    useEffect(() => {
-        // !COMMENT OUT IN DEV MODE
-        // const ids = [
-        //     setTimeout(() => setCitation(false), 4800),
-        //     setTimeout(() => setMain(true), 5700),
-        // ]
-        const ids = [setCitation(false), setMain(true)]
+  useEffect(() => {
+    // !COMMENT OUT IN DEV MODE
+    // const ids = [
+    //     setTimeout(() => setCitation(false), 4800),
+    //     setTimeout(() => setMain(true), 5700),
+    // ]
+    const ids = [setCitation(false), setMain(true)]
 
-        return () => ids.forEach((id) => clearTimeout(id))
-    }, [setCitation])
+    return () => ids.forEach((id) => clearTimeout(id))
+  }, [setCitation])
 
-    return (
-        <>
-            <Head>
-                <title>Create Next App</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <CitationOverlay citation={citation} />
-            {main && (
-                <motion.div
-                    variants={{
-                        initial: {
-                            opacity: 0,
-                            display: 'none',
-                        },
-                        visible: {
-                            opacity: 1,
-                            display: 'block',
-                        },
-                    }}
-                    initial="initial"
-                    animate={main ? 'visible' : 'initial'}
-                    transition={{
-                        duration: 1.0,
-                    }}
-                >
-                    <Header />
+  return (
+    <>
+      <Head>
+        <title>onivue-numerus</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <CitationOverlay citation={citation} />
+      {main && (
+        <motion.div
+          variants={{
+            initial: {
+              opacity: 0,
+              display: 'none',
+            },
+            visible: {
+              opacity: 1,
+              display: 'block',
+            },
+          }}
+          initial="initial"
+          animate={main ? 'visible' : 'initial'}
+          transition={{
+            duration: 1.0,
+          }}
+        >
+          <Header />
 
-                    <CounterView />
+          <CounterView />
 
-                    <Container>
-                        <div className="h-[200px] rounded-lg bg-gradient-to-r from-cyan-200 to-cyan-400 dark:bg-gradient-to-r dark:from-blue-600  dark:to-blue-400"></div>{' '}
-                    </Container>
-
-                    <Footer />
-                </motion.div>
-            )}
-        </>
-    )
+          <Footer />
+        </motion.div>
+      )}
+    </>
+  )
 }
