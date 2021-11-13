@@ -88,7 +88,7 @@ export const Header = () => {
             <div className="flex items-center justify-between w-auto py-5 md:py-9 text-black-900 dark:text-white">
               <Link href="/">
                 <a href="/">
-                  <Logo className="w-12 h-12 fill-current md:w-28 dark:text-white text-black-700" />
+                  <Logo className="w-12 h-12 text-white fill-current md:w-28 " />
                 </a>
               </Link>
               <div className="flex items-center">

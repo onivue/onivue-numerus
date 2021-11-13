@@ -91,25 +91,25 @@ const Counter = ({
 
   return (
     <>
-      <section className="relative flex flex-col justify-between flex-auto rounded-md shadow-md border-1">
+      <section className="relative flex flex-col justify-between flex-auto pt-3 rounded-md shadow-md ring-1 ring-cyan-200 dark:bg-gray-800">
         <div className="flex-row text-left md:flex left-1 top-1 md:top-2 ">
           <div className="flex justify-center ">
             <Avatar className="object-cover w-8 h-8 mx-3 rounded-full" {...avatarConfig} />
           </div>
 
           <div className="flex justify-center ">
-            <button className="flex items-center px-2 py-1 text-sm font-bold text-gray-800 rounded dark:text-white group hover:bg-gray-100 hover:bg-opacity-50">
+            <div className="flex items-center px-2 py-1 text-sm font-bold text-gray-800 rounded dark:text-white group hover:bg-gray-100 hover:bg-opacity-50">
               {counterName}
 
-              <HiOutlinePencilAlt className="w-5 h-5 ml-2 text-gray-800 opacity-0 group-hover:text-cyan-400 group-hover:opacity-100" />
-            </button>
+              <HiOutlinePencilAlt className="w-5 h-5 ml-2 text-gray-800 opacity-0 cursor-pointer group-hover:text-cyan-400 group-hover:opacity-100" />
+            </div>
           </div>
           {highScore === counter && (
             <div className="flex justify-center ">
               <span className="text-lg ">⭐</span>
             </div>
           )}
-          <div className="absolute top-0 right-0 flex justify-end flex-1">
+          <div className="absolute right-0 flex justify-end flex-1 top-2">
             <CounterDropdown
               remove={() => {
                 removeFromSession()

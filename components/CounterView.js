@@ -59,11 +59,7 @@ export const CounterView = () => {
         >
           {counters.map((c) => {
             return (
-              <motion.div
-                variants={listItem}
-                key={c.id}
-                className="flex transition-all duration-500"
-              >
+              <motion.div variants={listItem} key={c.id} className="flex ">
                 <Counter
                   removeFromSession={() => {
                     deleteCounter(c.id)

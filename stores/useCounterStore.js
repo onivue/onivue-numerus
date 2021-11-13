@@ -9,7 +9,10 @@ import create from 'zustand'
 const handleLoadCounters = async (set, get) => {
   try {
     const item = window.localStorage.getItem('onivue-numerus')
+
     set({ counters: item ? JSON.parse(item) : [] })
+    //LOADS HIGHSCORE STATE
+    get().changeCounter()
   } catch (error) {
     console.log(error)
   }
@@ -34,7 +37,7 @@ const handleChangeCounter = (id, action, payload, get, set) => {
   let counters = [...get().counters]
   let counter = counters.find((p) => p.id === id)
 
-  console.log(action)
+  console.log('handleChangeCounter Action:', action)
 
   if (action === 'INCREMENT') {
     counter.count += 10
