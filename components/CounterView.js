@@ -52,7 +52,7 @@ export const CounterView = () => {
       <SettingBar />
       <AnimatePresence>
         <motion.div
-          className="grid grid-cols-2 gap-6 lg:grid-cols-3 sm:gap-6 lg:gap-14 "
+          className="grid grid-cols-2 gap-6 lg:grid-cols-3 sm:gap-6 lg:gap-10 "
           variants={container}
           initial="hidden"
           animate="show"

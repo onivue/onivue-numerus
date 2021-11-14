@@ -1,4 +1,4 @@
-import { HiPlus, HiMinus, HiOutlinePencilAlt } from 'react-icons/hi'
+import { HiPlus, HiMinus, HiOutlinePencilAlt, HiOutlineCheck } from 'react-icons/hi'
 import starWarsNames from '@/data/starwars-names.json'
 import Avatar, { genConfig } from 'react-nice-avatar'
 import { useState, useEffect } from 'react'
@@ -77,6 +77,9 @@ const Counter = ({
   setAvatar,
   avatarConfig,
 }) => {
+  const [isRenaming, setIsRenaming] = useState(false)
+  const [newName, setNewName] = useState(counterName)
+
   useEffect(() => {
     if (!counterName) {
       console.log('-')
@@ -98,11 +101,37 @@ const Counter = ({
           </div>
 
           <div className="flex justify-center ">
-            <div className="flex items-center px-2 py-1 text-sm font-bold text-gray-800 rounded dark:text-white group hover:bg-gray-100 hover:bg-opacity-50">
-              {counterName}
+            {isRenaming ? (
+              <div className="flex items-center py-1 pr-4 font-bold rounded group bg-gray-50">
+                <input
+                  type="text"
+                  name="name"
+                  value={newName}
+                  onChange={(e) => {
+                    setNewName(e.target.value)
+                  }}
+                  className="w-full px-2 py-1 text-sm text-center bg-transparent rounded outline-none "
+                />
+                <HiOutlineCheck
+                  className="w-5 h-5 text-green-500 cursor-pointer group-hover:text-cyan-400 group-hover:opacity-100"
+                  onClick={() => {
+                    renameCounter({ counterName: newName })
+                    setIsRenaming(false)
+                  }}
+                />
+              </div>
+            ) : (
+              <div className="flex items-center px-2 py-1 text-sm font-bold text-gray-800 rounded dark:text-white group hover:bg-gray-100 hover:bg-opacity-50">
+                {counterName}
 
-              <HiOutlinePencilAlt className="w-5 h-5 ml-2 text-gray-800 opacity-0 cursor-pointer group-hover:text-cyan-400 group-hover:opacity-100" />
-            </div>
+                <HiOutlinePencilAlt
+                  className="hidden w-5 h-5 ml-2 text-gray-800 opacity-0 cursor-pointer group-hover:text-cyan-400 group-hover:opacity-100 group-hover:block"
+                  onClick={() => {
+                    setIsRenaming(true)
+                  }}
+                />
+              </div>
+            )}
           </div>
           {highScore === counter && (
             <div className="flex justify-center ">

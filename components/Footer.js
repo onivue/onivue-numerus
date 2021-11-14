@@ -1,7 +1,7 @@
 import { Container } from '@/components/Container'
 const Footer = () => {
   return (
-    <Container>
+    <Container className="mb-4">
       <div className="text-white rounded-lg bg-cyan-400">
         <div>
           <div className="py-4 footer bg-dark-gray">
