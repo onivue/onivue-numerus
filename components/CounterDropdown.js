@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { HiOutlineDotsVertical } from 'react-icons/hi'
 
-export default function ({ remove }) {
+export default function ({ remove, freeze }) {
   return (
     <Menu>
       {({ open }) => (
@@ -24,26 +24,28 @@ export default function ({ remove }) {
               <div className="py-1">
                 <Menu.Item>
                   {({ active }) => (
-                    <a
-                      href="#account-settings"
+                    <button
+                      onClick={() => freeze()}
                       className={`${
                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
                       } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
                     >
                       Freeze
-                    </a>
+                    </button>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <a
-                      href="#support"
+                    <button
+                      onClick={() => {
+                        console.log('FUNCTION MISSED')
+                      }}
                       className={`${
                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
                       } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
                     >
                       Generate New Avatar
-                    </a>
+                    </button>
                   )}
                 </Menu.Item>
               </div>

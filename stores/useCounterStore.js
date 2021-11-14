@@ -23,7 +23,7 @@ const handleAddCounter = async (set, get, name) => {
     let n = [...get().counters]
     let c = {}
     c.counterName = name || null
-    c.id = n.length + 1
+    c.id = new Date().getTime()
     c.count = 0
     n.push(c)
     window.localStorage.setItem('onivue-numerus', JSON.stringify(n))
@@ -34,8 +34,8 @@ const handleAddCounter = async (set, get, name) => {
 }
 
 const handleChangeCounter = (id, action, payload, get, set) => {
-  let counters = [...get().counters]
-  let counter = counters.find((p) => p.id === id)
+  const counters = [...get().counters]
+  const counter = counters.find((p) => p.id === id)
 
   console.log('handleChangeCounter Action:', action)
 
@@ -55,6 +55,14 @@ const handleChangeCounter = (id, action, payload, get, set) => {
     console.log(payload.avatarConfig)
   }
 
+  if (action === 'FREEZE') {
+    counter.freeze = !counter.freeze
+  }
+
+  if (action === 'DELETE') {
+    counters = counters.filter((p) => p.id != id)
+  }
+
   const checkHighScore = Math.max(...counters.map((value) => value.count))
   if (checkHighScore > get().highScore) {
     set({ highScore: checkHighScore })
@@ -62,17 +70,12 @@ const handleChangeCounter = (id, action, payload, get, set) => {
   if (checkHighScore < get().highScore) {
     set({ highScore: checkHighScore })
   }
+  if (!isFinite(checkHighScore)) {
+    set({ highScore: 0 })
+  }
 
   window.localStorage.setItem('onivue-numerus', JSON.stringify(counters))
   set({ counters: counters })
-}
-
-const handleRemoveCounter = (id, get, set) => {
-  let counters = [...get().counters]
-  let filteredCounters = counters.filter((p) => p.id != id)
-  console.log(filteredCounters)
-  window.localStorage.setItem('onivue-numerus', JSON.stringify(filteredCounters))
-  set({ counters: filteredCounters })
 }
 
 const useCounterStore = create((set, get) => ({
@@ -81,16 +84,17 @@ const useCounterStore = create((set, get) => ({
   loadCounters: async () => {
     await handleLoadCounters(set, get)
   },
-  addCounter: (name) => {
-    handleAddCounter(set, get, name)
-  },
+
   changeCounter: (id, action, payload) => {
     handleChangeCounter(id, action, payload, get, set)
   },
-  deleteCounter: (id) => {
-    handleRemoveCounter(id, get, set)
+  deleteAll: () => {
+    window.localStorage.setItem('onivue-numerus', JSON.stringify([]))
+    set({ counters: [] })
   },
-  deleteEverything: () => set({}, true), // true replaces state model instead of merging it
+  addCounter: (name) => {
+    handleAddCounter(set, get, name)
+  },
 }))
 
 export default useCounterStore

@@ -7,6 +7,7 @@ import { Container } from '@/components/Container'
 import { Hero } from '@/components/Hero'
 import { CounterView } from '@/components/CounterView'
 import Footer from '@/components/Footer'
+import SettingBar from '@/components/SettingsBar'
 
 export default function Home() {
   const [citation, setCitation] = useState(true)
@@ -49,7 +50,6 @@ export default function Home() {
           }}
         >
           <Header />
-
           <CounterView />
 
           <Footer />

@@ -2,7 +2,7 @@ import { HiPlus, HiMinus, HiOutlinePencilAlt, HiOutlineCheck } from 'react-icons
 import starWarsNames from '@/data/starwars-names.json'
 import Avatar, { genConfig } from 'react-nice-avatar'
 import { useState, useEffect } from 'react'
-import CounterDropdown from './CounterDropdown'
+import CounterDropdown from '@/components/CounterDropdown'
 
 const getRandomfromArray = (arr) => {
   return arr[Math.floor(Math.random() * arr.length)]
@@ -76,6 +76,8 @@ const Counter = ({
   highScore,
   setAvatar,
   avatarConfig,
+  setFreeze,
+  freeze,
 }) => {
   const [isRenaming, setIsRenaming] = useState(false)
   const [newName, setNewName] = useState(counterName)
@@ -95,6 +97,8 @@ const Counter = ({
   return (
     <>
       <section className="relative flex flex-col justify-between flex-auto pt-3 rounded-md shadow-md ring-1 ring-cyan-200 dark:bg-gray-800">
+        {freeze && <div className="absolute top-0 w-full h-full opacity-50 bg-cyan-100" />}
+
         <div className="flex-row text-left md:flex left-1 top-1 md:top-2 ">
           <div className="flex justify-center ">
             <Avatar className="object-cover w-8 h-8 mx-3 rounded-full" {...avatarConfig} />
@@ -142,6 +146,9 @@ const Counter = ({
             <CounterDropdown
               remove={() => {
                 removeFromSession()
+              }}
+              freeze={() => {
+                setFreeze()
               }}
             />
           </div>

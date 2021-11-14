@@ -1,12 +1,15 @@
 import { motion, AnimatePresence } from 'framer-motion'
+import { FaGithub, FaLinkedin, FaTelegram, FaTwitter } from 'react-icons/fa'
 import { MediaIcon } from '@/components/MediaIcon'
 import { Container } from '@/components/Container'
 import AddCounter from './AddCounter'
 import Counter from './Counter'
 import SettingBar from './SettingsBar'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 import useCounterStore from '@/stores/useCounterStore'
+
+import { useLocalStorage } from '@/hooks/useLocalStorage'
 
 const variantsContainer = {
   hidden: { opacity: 0 },
@@ -16,17 +19,18 @@ const variantsContainer = {
       staggerChildren: 0.3,
     },
   },
-  exit: { opacity: 0 },
+  exit: { opacity: 0, scale: 0 },
 }
 const variantsItems = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
+  hidden: {
+    opacity: 0,
     transition: {
-      duration: 0.3,
+      duration: 4,
+      ease: [0.83, 0, 0.17, 1],
     },
   },
-  exit: { opacity: 0 },
+  show: { opacity: 1, scale: 1 },
+  exit: { opacity: 0, scale: 0 },
 }
 
 export const CounterView = () => {
@@ -63,34 +67,32 @@ export const CounterView = () => {
         <AnimatePresence>
           {counters.map((c) => {
             return (
-              <motion.div variants={variantsItems} key={c.id}>
-                <motion.div variants={variantsItems} initial="hidden" animate="show" exit="exit">
-                  <Counter
-                    removeFromSession={() => {
-                      changeCounter(c.id, 'DELETE')
-                    }}
-                    increment={() => {
-                      changeCounter(c.id, 'INCREMENT')
-                    }}
-                    decrement={() => {
-                      changeCounter(c.id, 'DECREMENT')
-                    }}
-                    renameCounter={(newCounterName) => {
-                      changeCounter(c.id, 'RENAME', newCounterName)
-                    }}
-                    setAvatar={(avatarConfig) => {
-                      changeCounter(c.id, 'SETAVATAR', avatarConfig)
-                    }}
-                    avatarConfig={c.avatarConfig}
-                    counter={c.count}
-                    counterName={c.counterName}
-                    highScore={highScore}
-                    setFreeze={() => {
-                      changeCounter(c.id, 'FREEZE')
-                    }}
-                    freeze={c.freeze}
-                  />
-                </motion.div>
+              <motion.div variants={variantsItems} key={c.id} className="flex">
+                <Counter
+                  removeFromSession={() => {
+                    changeCounter(c.id, 'DELETE')
+                  }}
+                  increment={() => {
+                    changeCounter(c.id, 'INCREMENT')
+                  }}
+                  decrement={() => {
+                    changeCounter(c.id, 'DECREMENT')
+                  }}
+                  renameCounter={(newCounterName) => {
+                    changeCounter(c.id, 'RENAME', newCounterName)
+                  }}
+                  setAvatar={(avatarConfig) => {
+                    changeCounter(c.id, 'SETAVATAR', avatarConfig)
+                  }}
+                  avatarConfig={c.avatarConfig}
+                  counter={c.count}
+                  counterName={c.counterName}
+                  highScore={highScore}
+                  setFreeze={() => {
+                    changeCounter(c.id, 'FREEZE')
+                  }}
+                  freeze={c.freeze}
+                />
               </motion.div>
             )
           })}
