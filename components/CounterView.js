@@ -41,15 +41,15 @@ export const CounterView = () => {
   const highScore = useCounterStore((state) => state.highScore)
 
   return (
-    <Container className="pt-24 md:pt-32">
+    <Container className="pt-24 md:pt-20">
       <div className="flex items-center">
         {counters.length === 0 && (
-          <h1 className="mt-6 mb-6 text-4xl font-bold md:mt-8 md:mb-8 md:text-5xl text-black-900 dark:text-white">
+          <h1 className="mt-6 mb-6 text-4xl font-bold md:mt-8 md:mb-8 md:text-5xl text-dark-200 dark:text-white">
             Starte mit einem neuen Counter!
           </h1>
         )}
       </div>
-      <h1 className="mt-6 mb-6 text-4xl font-bold md:mt-8 md:mb-8 md:text-5xl text-black-900 dark:text-white">
+      <h1 className="mt-6 mb-6 text-4xl font-bold md:mt-8 md:mb-8 md:text-5xl text-dark-200 dark:text-white">
         Highscore: {highScore}
       </h1>
       <SettingBar />
@@ -64,7 +64,13 @@ export const CounterView = () => {
           {counters.map((c) => {
             return (
               <motion.div variants={variantsItems} key={c.id}>
-                <motion.div variants={variantsItems} initial="hidden" animate="show" exit="exit">
+                <motion.div
+                  variants={variantsItems}
+                  initial="hidden"
+                  animate="show"
+                  exit="exit"
+                  className="h-full"
+                >
                   <Counter
                     removeFromSession={() => {
                       changeCounter(c.id, 'DELETE')

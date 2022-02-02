@@ -2,31 +2,23 @@ import { Container } from '@/components/Container'
 const Footer = () => {
   return (
     <Container className="mb-4">
-      <div className="text-white rounded-lg bg-cyan-400">
+      <div className="text-white rounded-lg bg-amber-300">
         <div>
           <div className="py-4 footer bg-dark-gray">
             <div className="flex flex-col items-center px-8 text-xs leading-normal xl:container md:flex-row md:justify-between xl:mx-auto text-lightmedium-gray md:text-sm">
               <div className="text-center md:text-left">
-                © 2021 Made by{' '}
-                <a
-                  href="#"
-                  target="_blank"
-                  className="underline text-lightmedium-gray hover:text-gray-400"
-                >
+                © 2022 created by{' '}
+                <a href="#" target="_blank" className="underline text-lightmedium-gray ">
                   Albin Hoti
                 </a>{' '}
-                in Switzerland, CH.
-                <a
-                  href="#"
-                  className="underline md:hidden text-lightmedium-gray hover:text-green-400"
-                >
+                <a href="#" className="underline md:hidden text-lightmedium-gray ">
                   Contact
                 </a>
               </div>
               <div className="hidden md:block">
                 <a
                   href="https://tallycount.app/contact"
-                  className="underline text-lightmedium-gray hover:text-gray-400"
+                  className="underline text-lightmedium-gray "
                 >
                   Contact
                 </a>

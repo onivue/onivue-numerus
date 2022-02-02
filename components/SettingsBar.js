@@ -20,20 +20,20 @@ const SettingBar = () => {
     <div>
       <div className="relative flex items-center justify-between mb-3 rounded-lg bg-gray-50 dark:bg-gray-800">
         <div className="flex items-center justify-start w-24 pl-4 md:pl-0" id="settingsBarLeft">
-          <IconWrapper>
+          {/* <IconWrapper>
             <HiOutlineViewGrid className="w-5 h-5" />
-          </IconWrapper>
+          </IconWrapper> */}
         </div>
         <div className="flex items-center justify-end w-24 pr-4 md:pr-0" id="settingsBarRight">
-          <IconWrapper>
+          {/* <IconWrapper>
             <HiOutlineSwitchVertical className="w-5 h-5" />
-          </IconWrapper>
+          </IconWrapper> */}
           <IconWrapper>
             <HiOutlineTrash className="w-5 h-5" onClick={deleteAll} />
           </IconWrapper>
-          <IconWrapper>
+          {/* <IconWrapper>
             <HiOutlineCog className="w-5 h-5" />
-          </IconWrapper>
+          </IconWrapper> */}
         </div>
       </div>
     </div>

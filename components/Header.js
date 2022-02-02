@@ -36,42 +36,17 @@ const Themes = {
   dark: 'dark',
 }
 
-const languages = [
-  {
-    id: 1,
-    name: 'RU',
-    flag: '🇷🇺',
-  },
-  {
-    id: 2,
-    name: 'EN',
-    flag: '🇺🇸',
-  },
-]
-
 export const Header = () => {
-  // const [playOnDark] = useSound('/sounds/dark-on.mp3')
-  // const [playOnLight] = useSound('/sounds/light-on.mp3')
   const visible = useHeaderVisible()
-  const ref = useRef(null)
 
   const [mounted, setMounted] = useState(false)
-  const [langPicker, setLangPicker] = useState(false)
-  const [language, setLanguage] = useState('de')
 
   const { theme, setTheme } = useTheme()
-  const router = useRouter()
 
   const toggleTheme = useCallback(() => {
-    // if (theme === Themes.light) {
-    //     playOnLight()
-    // } else {
-    //     playOnDark()
-    // }
-
     setTheme(theme === Themes.light ? Themes.dark : Themes.light)
     console.log(theme)
-  }, [setTheme, theme /*playOnDark, playOnLight*/])
+  }, [setTheme, theme])
 
   useEffect(() => setMounted(true), [])
 
@@ -84,11 +59,11 @@ export const Header = () => {
         )}
       >
         <div className="flex justify-center ">
-          <div className="w-full max-w-screen-lg px-4 mx-3 mt-3 rounded-lg bg-cyan-400">
-            <div className="flex items-center justify-between w-auto py-5 md:py-9 text-black-900 dark:text-white">
+          <div className="w-full max-w-screen-lg px-4 mx-3 mt-3 rounded-lg bg-amber-300">
+            <div className="flex items-center justify-between w-auto py-3 md:py-3 text-dark-200 dark:text-white">
               <Link href="/">
                 <a href="/">
-                  <Logo className="w-12 h-12 text-white fill-current md:w-28 " />
+                  <Logo className="w-12 h-12 text-white fill-current " />
                 </a>
               </Link>
               <div className="flex items-center">

@@ -96,8 +96,8 @@ const Counter = ({
 
   return (
     <>
-      <section className="relative flex flex-col justify-between flex-auto pt-3 rounded-md shadow-md ring-1 ring-cyan-200 dark:bg-gray-800">
-        {freeze && <div className="absolute top-0 w-full h-full opacity-50 bg-cyan-100" />}
+      <section className="relative flex flex-col justify-between flex-auto h-full pt-3 rounded-md shadow-md ring-1 ring-amber-200 dark:bg-gray-800">
+        {freeze && <div className="absolute top-0 w-full h-full opacity-50 bg-amber-100" />}
 
         <div className="flex-row text-left md:flex left-1 top-1 md:top-2 ">
           <div className="flex justify-center ">
@@ -117,7 +117,7 @@ const Counter = ({
                   className="w-full px-2 py-1 text-sm text-center bg-transparent rounded outline-none "
                 />
                 <HiOutlineCheck
-                  className="w-5 h-5 text-green-500 cursor-pointer group-hover:text-cyan-400 group-hover:opacity-100"
+                  className="w-5 h-5 text-green-500 cursor-pointer group-hover:text-amber-400 group-hover:opacity-100"
                   onClick={() => {
                     renameCounter({ counterName: newName })
                     setIsRenaming(false)
@@ -129,7 +129,7 @@ const Counter = ({
                 {counterName}
 
                 <HiOutlinePencilAlt
-                  className="hidden w-5 h-5 ml-2 text-gray-800 opacity-0 cursor-pointer group-hover:text-cyan-400 group-hover:opacity-100 group-hover:block"
+                  className="hidden w-5 h-5 ml-2 text-gray-800 opacity-0 cursor-pointer group-hover:text-amber-400 group-hover:opacity-100 group-hover:block"
                   onClick={() => {
                     setIsRenaming(true)
                   }}
@@ -138,7 +138,7 @@ const Counter = ({
             )}
           </div>
           {highScore === counter && (
-            <div className="flex justify-center ">
+            <div className="absolute flex justify-center top-2 md:left-0 md:top-0 left-2">
               <span className="text-lg ">⭐</span>
             </div>
           )}
@@ -155,14 +155,14 @@ const Counter = ({
         </div>
 
         <div className="px-3 py-1 text-center md:px-6 lg:px-10">
-          <div className="text-5xl font-bold line text-cyan-400">{counter}</div>
+          <div className="text-5xl font-bold line text-amber-400">{counter}</div>
         </div>
         <div className="flex ">
           <button
             onClick={() => {
               decrement()
             }}
-            className="w-1/2 pt-3 pb-5 text-center transition duration-150 ease-in-out large-button text-light-gray hover:text-cyan-400 focus:outline-none"
+            className="w-1/2 pt-3 pb-5 text-center transition duration-150 ease-in-out large-button text-light-gray hover:text-amber-400 focus:outline-none"
           >
             <HiMinus className="w-8 h-8 mx-auto" />
           </button>

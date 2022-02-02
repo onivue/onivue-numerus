@@ -40,10 +40,10 @@ const handleChangeCounter = (id, action, payload, get, set) => {
   console.log('handleChangeCounter Action:', action)
 
   if (action === 'INCREMENT') {
-    counter.count += 10
+    counter.count += get().steps
   }
   if (action === 'DECREMENT') {
-    counter.count -= 10
+    counter.count -= get().steps
   }
 
   if (action === 'RENAME') {
@@ -84,6 +84,7 @@ const useCounterStore = create((set, get) => ({
   loadCounters: async () => {
     await handleLoadCounters(set, get)
   },
+  steps: 1,
 
   changeCounter: (id, action, payload) => {
     handleChangeCounter(id, action, payload, get, set)
